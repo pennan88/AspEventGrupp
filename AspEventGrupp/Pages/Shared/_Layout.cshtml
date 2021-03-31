@@ -10,25 +10,24 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">AspEventGrupp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
+            <div class="container d-sm-inline-flex">
+                <ul class="navbar-nav flex-grow-1 justify-content-start">
+                    <li class="nav-item mx-2">
+                        <a class="btn btn-outline-primary " asp-area="" asp-page="/Index">Home</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="btn btn-outline-success" asp-area="" asp-page="">Upcoming Events</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="btn btn-outline-success" asp-area="" asp-page="">My Events</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container d-sm-inline-flex border-1">
+                <partial name="_LoginPartial">
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,8 +36,10 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - AspEventGrupp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        <div class="d-flex justify-content-around">
+            <span>
+                &copy; 2021 - ASP_NET_Inlämningsuppgift_Facit - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </span>
         </div>
     </footer>
 
