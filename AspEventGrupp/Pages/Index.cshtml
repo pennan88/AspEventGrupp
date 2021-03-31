@@ -1,10 +1,48 @@
 ﻿@page
+@using AspEventGrupp.Models
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if ( SignInManager.IsSignedIn(User) )
+{
+
+    <div class="container d-flex justify-content-center align-content-center">
+        <div class="card" style="width: 40rem;">
+            <h1 class="text-center m-2">Welcome @User.Identity.Name</h1>
+            <p class="text-center m-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum ratione tempore nostrum
+                nisi repellendus dolorem reprehenderit sequi voluptate officiis sit nemo facilis quos porro
+                placeat quo dolorum, doloribus impedit.
+            </p>
+            <div class="container d-flex justify-content-center">
+                <button class="btn btn-outline-primary m-2">My Events</button>
+                <button class="btn btn-outline-primary m-2">Find Events</button>
+            </div>
+        </div>
+
+    </div>
+}
+
+else
+{
+    <div class="container d-flex justify-content-center align-content-center">
+        <div class="card" style="width: 40rem;">
+            <h1 class="text-center m-2">Welcome to Event Handler 3000</h1>
+            <p class="text-center m-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum ratione tempore nostrum
+                nisi repellendus dolorem reprehenderit sequi voluptate officiis sit nemo facilis quos porro
+                placeat quo dolorum, doloribus impedit.
+            </p>
+            <div class="container d-flex justify-content-center">
+                <button class="btn btn-outline-primary m-2">Login</button>
+                <button class="btn btn-outline-primary m-2">Register</button>
+            </div>
+        </div>
+
+    </div>
+}
+
