@@ -7,11 +7,14 @@
 
 <h1>Events</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+@if (User.Identity.Name == "Organizer")
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
 <div class="container d-flex justify-content-center">
-    @foreach ( var item in Model.Event )
+    @foreach (var item in Model.Event)
     {
         <div class="card mx-2" style="width: 18rem;">
             <img src="~/images/1-2.jpg" class="card-img-top" />

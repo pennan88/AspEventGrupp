@@ -47,6 +47,14 @@ namespace AspEventGrupp.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Firstname")]
+            public string Firstname { get; set; }
+
+            [Required]
+            [Display(Name = "Lastname")]
+            public string Lastname { get; set; }
+
+            [Required]
             [Display(Name = "Username")]
             public string Username { get; set; }
 
@@ -79,7 +87,7 @@ namespace AspEventGrupp.Areas.Identity.Pages.Account
             ExternalLogins = ( await _signInManager.GetExternalAuthenticationSchemesAsync() ).ToList();
             if ( ModelState.IsValid )
             {
-                var user = new User { UserName = Input.Username, Email = Input.Email };
+                var user = new User { FirstName = Input.Firstname, LastName = Input.Lastname, UserName = Input.Username, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if ( result.Succeeded )
                 {

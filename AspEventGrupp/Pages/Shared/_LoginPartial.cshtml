@@ -30,7 +30,7 @@
     @if(SignInManager.IsSignedIn(User) && User.Identity.Name == "Administator")
     {
     <li>
-        <a class="btn btn-danger mx-2">Manage Users</a>
+        <a class="btn btn-danger mx-2"asp-page="/ManageUser">Manage Users</a>
     </li>
     }
 </ul>
