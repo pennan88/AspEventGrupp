@@ -28,5 +28,7 @@ namespace AspEventGrupp.Pages
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
+
+
     }
 }

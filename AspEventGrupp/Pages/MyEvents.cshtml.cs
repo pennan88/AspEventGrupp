@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using AspEventGrupp.Data;
 using AspEventGrupp.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspEventGrupp.Pages
 {
+    [Authorize]
     public class MyEventsModel : PageModel
     {
         private readonly ApplicationDbContext _context;
