@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspEventGrupp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210401081821_FirstMig")]
+    [Migration("20210401093238_FirstMig")]
     partial class FirstMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,0 +1,58 @@
+﻿@page
+@model AspEventGrupp.Pages.JoinEventModel
+
+@{
+    ViewData["Title"] = "JoinEvent";
+}
+
+<h1>JoinEvent</h1>
+
+<div class="container">
+    <h1 class="text-center">@Model.Event.Title</h1>
+    <div class="container d-flex justify-content-center">
+        <div class="card mx-2" style="width: 30rem;">
+            <img src="~/images/1-2.jpg" class="card-img-top" />
+            <div class="d-flex flex-row justify-content-sm-between">
+                <div class="container-fluid">
+                    <dl class="row align-content-center">
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.Event.Description)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Event.Description)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.Event.Adress)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Event.Adress)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.Event.Location)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Event.Location)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.Event.Date)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Event.Date)
+                        </dd>
+                        <dt class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.Event.SpotsLeft)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Event.SpotsLeft)
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+            <form method="post">
+                <input class="m-2 btn btn-outline-success align-self-center" type="submit" value="Join Event" />
+            </form>
+        </div>
+    </div>
+</div>
+

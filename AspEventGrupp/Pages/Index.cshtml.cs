@@ -31,6 +31,8 @@ namespace AspEventGrupp.Pages
                 await _context.Seed(_userManager);
             }
 
+
+
         }
     }
 }
