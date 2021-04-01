@@ -1,9 +1,12 @@
 ﻿using AspEventGrupp.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AspEventGrupp.Data
 {
@@ -16,5 +19,34 @@ namespace AspEventGrupp.Data
 
         public DbSet<Event> Event { get; set; }
         public DbSet<User> User { get; set; }
+
+
+        public async Task Seed(UserManager<User> userManager)
+        {
+            await Database.EnsureDeletedAsync();
+            await Database.EnsureCreatedAsync();
+
+            if ( Event.Any() )
+
+            {
+                return;
+            }
+
+            var Events = new Event[]
+        {
+            new Event{Title="En Fest", Adress="FestGatan", Date = DateTime.Now, Location="Feststaden", SpotsLeft=100, Description="En stor fest" }
+        };
+
+            await AddRangeAsync(Events);
+
+            await SaveChangesAsync();
+
+
+        }
+
     }
+
+
+
+
 }
