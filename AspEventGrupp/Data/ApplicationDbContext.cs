@@ -21,7 +21,7 @@ namespace AspEventGrupp.Data
         public DbSet<User> User { get; set; }
 
 
-        public async Task Seed(UserManager<User> userManager)
+        public async Task Seed(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();
@@ -37,12 +37,16 @@ namespace AspEventGrupp.Data
             new Event{Title="En Fest", Adress="FestGatan", Date = DateTime.Now, Location="Feststaden", SpotsLeft=100, Description="En stor fest" }
         };
 
+            await ContextSeed.SeedRoles(userManager, roleManager);
+            await ContextSeed.SeedUser(userManager, roleManager);
+
             await AddRangeAsync(Events);
 
             await SaveChangesAsync();
 
 
         }
+
 
     }
 

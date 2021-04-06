@@ -28,8 +28,6 @@ namespace AspEventGrupp
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    await ContextSeed.SeedRoles(userManager, roleManager);
-                    await ContextSeed.SeedUser(userManager, roleManager);
                 }
                 catch ( Exception ex )
                 {

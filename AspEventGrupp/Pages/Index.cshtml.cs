@@ -30,7 +30,7 @@ namespace AspEventGrupp.Pages
         {
             if ( resetDb ?? false )
             {
-                await _context.Seed(_userManager);
+                await _context.Seed(_userManager, _roleManager);
             }
 
         }
