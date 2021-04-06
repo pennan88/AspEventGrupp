@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspEventGrupp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210406084512_Firstmig")]
-    partial class Firstmig
+    [Migration("20210406133816_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,9 +102,6 @@ namespace AspEventGrupp.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -162,12 +159,17 @@ namespace AspEventGrupp.Data.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -304,6 +306,13 @@ namespace AspEventGrupp.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.HasOne("AspEventGrupp.Models.User", null)
+                        .WithMany("roles")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -358,6 +367,11 @@ namespace AspEventGrupp.Data.Migrations
             modelBuilder.Entity("AspEventGrupp.Models.Event", b =>
                 {
                     b.Navigation("Organizer");
+                });
+
+            modelBuilder.Entity("AspEventGrupp.Models.User", b =>
+                {
+                    b.Navigation("roles");
                 });
 #pragma warning restore 612, 618
         }

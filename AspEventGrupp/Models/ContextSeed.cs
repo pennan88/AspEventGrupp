@@ -23,14 +23,14 @@ namespace AspEventGrupp.Models
                 new User {FirstName = "Alexander",
                     LastName = "Fagrelius",
                     Email = "Mail@mail.com",
-                    UserName = "Admin",
+                    UserName = "pennan88",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true},
 
                 new User {FirstName = "Organiszer",
                     LastName = ".AB",
                     Email = "OrgMail@mail.com",
-                    UserName = "Organizer",
+                    UserName = "Orguser",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true}
             };

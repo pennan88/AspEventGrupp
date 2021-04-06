@@ -11,12 +11,14 @@ namespace AspEventGrupp.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Role { get; set; }
 
         [InverseProperty("Organizer")]
         public Event HostedEvents { get; set; }
 
         [InverseProperty("Attendess")]
         public List<Event> JoinedEvents { get; set; }
+
+
+        public List<IdentityRole> roles { get; set; }
     }
 }

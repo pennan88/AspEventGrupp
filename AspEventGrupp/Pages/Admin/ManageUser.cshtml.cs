@@ -8,24 +8,28 @@ using Microsoft.EntityFrameworkCore;
 using AspEventGrupp.Data;
 using AspEventGrupp.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AspEventGrupp.Pages
 {
     [Authorize(Roles = "Admin")]
     public class ManageUserModel : PageModel
     {
-        private readonly AspEventGrupp.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public ManageUserModel(AspEventGrupp.Data.ApplicationDbContext context)
+        public ManageUserModel(AspEventGrupp.Data.ApplicationDbContext context, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _roleManager = roleManager;
         }
-
-        public IList<Event> Event { get; set; }
+        public List<IdentityRole> roles { get; set; }
         public List<User> Users { get; set; }
+
         public async Task OnGetAsync()
         {
-            Users = await _context.User.ToListAsync();
+            Users = await _context.User.Include(o => o.roles).ToListAsync();
+            roles = await _roleManager.Roles.ToListAsync();
         }
     }
 }
