@@ -4,8 +4,24 @@
 @inject UserManager<User> UserManager
 
 <ul class="navbar-nav flex-grow-1 justify-content-end">
-    @if (SignInManager.IsSignedIn(User))
+    @if ( SignInManager.IsSignedIn(User) )
     {
+        @if ( User.IsInRole("Admin") )
+        {
+            <li>
+                <a class="btn btn-danger mx-2" asp-page="/ManageUser">Manage Users</a>
+            </li>
+        }
+
+        @if ( User.IsInRole("Organizer") )
+        {
+            <li>
+                <a class="btn btn-success mx-2" asp-page="">Manage Events</a>
+            </li>
+            <li>
+                <a class="btn btn-success mx-2" asp-page="">Create Event</a>
+            </li>
+        }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
         </li>
@@ -27,20 +43,5 @@
 
     }
 
-    @if (SignInManager.IsSignedIn(User) && User.Identity.Name == "Administator")
-    {
-        <li>
-            <a class="btn btn-danger mx-2" asp-page="/ManageUser">Manage Users</a>
-        </li>
-    }
 
-    <!--@@if (SignInManager.IsSignedIn(User) && User.Identity.Name == "Organizer")
-    {
-        <li>
-            <a class="btn btn-success mx-2" asp-page=""></a>
-        </li>
-        <li>
-            <a class="btn btn-success mx-2" asp-page=""></a>
-        </li>
-    }-->
 </ul>

@@ -16,12 +16,14 @@ namespace AspEventGrupp.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public IndexModel(ILogger<IndexModel> logger, ApplicationDbContext context, UserManager<User> userManager)
+        public IndexModel(ILogger<IndexModel> logger, ApplicationDbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _context = context;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task OnGetAsync(bool? resetDb)

@@ -37,7 +37,6 @@ namespace AspEventGrupp.Data
             new Event{Title="En Fest", Adress="FestGatan", Date = DateTime.Now, Location="Feststaden", SpotsLeft=100, Description="En stor fest" }
         };
 
-
             await AddRangeAsync(Events);
 
             await SaveChangesAsync();

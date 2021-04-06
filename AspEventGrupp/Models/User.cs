@@ -9,10 +9,9 @@ namespace AspEventGrupp.Models
 {
     public class User : IdentityUser
     {
-        //public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Role { get; set; }
+        public string Role { get; set; }
 
         [InverseProperty("Organizer")]
         public Event HostedEvents { get; set; }
