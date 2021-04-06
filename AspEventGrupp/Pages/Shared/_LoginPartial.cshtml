@@ -9,17 +9,17 @@
         @if ( User.IsInRole("Admin") )
         {
             <li>
-                <a class="btn btn-danger mx-2" asp-page="/ManageUser">Manage Users</a>
+                <a class="btn btn-danger mx-2" asp-page="/Admin/ManageUser">Manage Users</a>
             </li>
         }
 
         @if ( User.IsInRole("Organizer") )
         {
             <li>
-                <a class="btn btn-success mx-2" asp-page="">Manage Events</a>
+                <a class="btn btn-success mx-2" asp-page="/Organizer/ManageEvents">Manage Events</a>
             </li>
             <li>
-                <a class="btn btn-success mx-2" asp-page="">Create Event</a>
+                <a class="btn btn-success mx-2" asp-page="/Organizer/AddEvent">Create Event</a>
             </li>
         }
         <li class="nav-item">

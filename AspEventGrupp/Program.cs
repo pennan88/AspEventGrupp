@@ -25,9 +25,11 @@ namespace AspEventGrupp
 
                 try
                 {
+                    /*
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    */
                 }
                 catch ( Exception ex )
                 {
