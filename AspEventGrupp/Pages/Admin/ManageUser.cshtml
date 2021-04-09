@@ -1,7 +1,11 @@
 ﻿@page
 @model AspEventGrupp.Pages.ManageUserModel
 
-@inject RoleManager<IdentityRole> role
+@using Microsoft.AspNetCore.Identity;
+@using AspEventGrupp.Models;
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = "ManageUser";
@@ -13,22 +17,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].FirstName)
+                @Html.DisplayNameFor(model => model.MyUsers[0].FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].LastName)
+                @Html.DisplayNameFor(model => model.MyUsers[0].LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].Email)
+                @Html.DisplayNameFor(model => model.MyUsers[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Users[0].UserName)
+                @Html.DisplayNameFor(model => model.MyUsers[0].UserName)
             </th>
+            <td>
+                <b>Current Role</b>
+            </td>
+            <td>
+                <b>Promote to Organizer </b>
+            </td>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Users)
+        @foreach (var item in Model.MyUsers)
         {
             <tr>
                 <td>
@@ -44,15 +54,34 @@
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
-                    <form method="post">
-                        <div class="input-group mb-3">
-                            <select class="form-select mx-2" id="inputGroupSelect02">
-                                <option value="1">Organizer</option>
-                                <option value="2">User</option>
-                            </select>
-                            <input type="submit" class="btn btn-outline-info mx-2" for="inputGroupSelect02" />
-                        </div>
-                    </form>
+                    @if (UserManager.IsInRoleAsync(item, "Admin").Result)
+                    {
+                        <i class="fas fa-crown">Admin</i>
+                    }
+                    else if (UserManager.IsInRoleAsync(item, "Organizer").Result)
+                    {
+                        <i class="fas fa-crown">Organizer</i>
+                    }
+                    else if (UserManager.IsInRoleAsync(item, "User").Result)
+                    {
+                        <i class="fas fa-crown">User</i>
+                    }
+                </td>
+                <td>
+                    @if (!UserManager.IsInRoleAsync(item, "Organizer").Result && !UserManager.IsInRoleAsync(item, "Admin").Result)
+                    {
+                        <form method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="checkbox" onchange="this.form.submit()" value="@item.Id" name="id" />
+                        </form>
+                    }
+                    else
+                    {
+                        <form method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="checkbox" onchange="this.form.submit()" value="@item.Id" name="id" checked />
+                        </form>
+                    }
                 </td>
             </tr>
         }
