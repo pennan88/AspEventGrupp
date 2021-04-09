@@ -26,7 +26,7 @@ namespace AspEventGrupp.Data
             await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();
 
-            if ( Event.Any() )
+            if (Event.Any())
 
             {
                 return;
@@ -34,7 +34,24 @@ namespace AspEventGrupp.Data
 
             var Events = new Event[]
         {
-            new Event{Title="En Fest", Adress="FestGatan", Date = DateTime.Now, Location="Feststaden", SpotsLeft=100, Description="En stor fest" }
+            new Event{Title="Summerburst",
+                Adress="Ullevigatan 5, 411 39 Göteborg",
+                Date = DateTime.Now,
+                Location="Ullevi",
+                SpotsLeft=6500,
+                Description="En stor fest lokaliserad på Ullevi i Göteborg" },
+            new Event{Title="Lady Gaga",
+                Adress="Globentorget 2, 121 77 Johanneshov ",
+                Date = DateTime.Now,
+                Location="Globen",
+                SpotsLeft=300,
+                Description="Lady Gaga spelar i Globen" },
+            new Event{Title="Supefest 3000",
+                Adress="Festgatan 31, 420 69 Partystreet ",
+                Date = DateTime.Now,
+                Location="Månen",
+                SpotsLeft=300,
+                Description="En mycket stor fest" },
         };
 
             await ContextSeed.SeedRoles(userManager, roleManager);

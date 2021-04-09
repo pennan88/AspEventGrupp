@@ -6,7 +6,7 @@
 @{
     ViewData["Title"] = "Home page";
 }
-@if ( SignInManager.IsSignedIn(User) )
+@if (SignInManager.IsSignedIn(User))
 {
 
     <div class="container d-flex justify-content-center align-content-center">
@@ -18,8 +18,8 @@
                 placeat quo dolorum, doloribus impedit.
             </p>
             <div class="container d-flex justify-content-center">
-                <button class="btn btn-outline-primary m-2">My Events</button>
-                <button class="btn btn-outline-primary m-2">Find Events</button>
+                <a class="btn btn-outline-success m-2" asp-area="" asp-page="/MyEvents">My Events</a>
+                <a class="btn btn-outline-success m-2" asp-area="" asp-page="/Events">Upcoming Events</a>
             </div>
         </div>
 
@@ -37,8 +37,8 @@ else
                 placeat quo dolorum, doloribus impedit.
             </p>
             <div class="container d-flex justify-content-center">
-                <button class="btn btn-outline-primary m-2">Login</button>
-                <button class="btn btn-outline-primary m-2">Register</button>
+                <a class="btn btn-outline-primary mx-2" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                <a class="btn btn-outline-secondary mx-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
 
             </div>
         </div>
