@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspEventGrupp.Data;
 using AspEventGrupp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspEventGrupp.Pages.Organizer.Options
 {
+    [Authorize(Roles = "Organizer")]
     public class EditModel : PageModel
     {
         private readonly AspEventGrupp.Data.ApplicationDbContext _context;
