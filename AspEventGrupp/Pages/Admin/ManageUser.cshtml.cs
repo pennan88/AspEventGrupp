@@ -28,7 +28,7 @@ namespace AspEventGrupp.Pages
 
         public async Task OnGetAsync()
         {
-            Users = await _context.User.Include(o => o.roles).ToListAsync();
+            Users = await _context.User.ToListAsync();
             roles = await _roleManager.Roles.ToListAsync();
         }
     }

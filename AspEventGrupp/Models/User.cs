@@ -17,8 +17,5 @@ namespace AspEventGrupp.Models
 
         [InverseProperty("Attendess")]
         public List<Event> JoinedEvents { get; set; }
-
-
-        public List<IdentityRole> roles { get; set; }
     }
 }
