@@ -55,6 +55,13 @@ namespace AspEventGrupp.Data
                 Genre = "Fest",
                 SpotsLeft=300,
                 Description="En mycket stor fest" },
+            new Event{Title="Böda Double Dog Show 2021",
+                Adress="Kronocamping Böda Sand",
+                Date = DateTime.Now,
+                Location="Löttorp",
+                Genre = "Internationell Hundutställning",
+                SpotsLeft=250,
+                Description="Välkommen till internationell hundutställning med möjlighet att vinna svenskt certifikat och internationellt certifikat, CACIB." },
         };
 
             await ContextSeed.SeedRoles(userManager, roleManager);
