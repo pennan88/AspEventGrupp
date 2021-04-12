@@ -10,7 +10,7 @@
 {
 
     <div class="container d-flex justify-content-center align-content-center">
-        <div class="card" style="width: 40rem;">
+        <div class="card-" style="width: 40rem; background: none; margin-top: 150px;">
             <h1 class="text-center m-2">Welcome @User.Identity.Name</h1>
             <p class="text-center m-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum ratione tempore nostrum
@@ -18,8 +18,8 @@
                 placeat quo dolorum, doloribus impedit.
             </p>
             <div class="container d-flex justify-content-center">
-                <a class="btn btn-outline-success m-2" asp-area="" asp-page="/MyEvents">My Events</a>
-                <a class="btn btn-outline-success m-2" asp-area="" asp-page="/Events">Upcoming Events</a>
+                <a class="btn btn-success m-2" asp-area="" asp-page="/MyEvents">My Events</a>
+                <a class="btn btn-success m-2" asp-area="" asp-page="/Events">Upcoming Events</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
 else
 {
     <div class="container d-flex justify-content-center align-content-center">
-        <div class="card" style="width: 40rem;">
+        <div class="card" style="width: 40rem; background: none; border:none; margin-top:150px;">
             <h1 class="text-center m-2">Welcome to Event Handler 3000</h1>
             <p class="text-center m-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum ratione tempore nostrum
@@ -37,8 +37,8 @@ else
                 placeat quo dolorum, doloribus impedit.
             </p>
             <div class="container d-flex justify-content-center">
-                <a class="btn btn-outline-primary mx-2" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                <a class="btn btn-outline-secondary mx-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                <a class="btn btn-primary mx-2" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                <a class="btn btn-secondary mx-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
 
             </div>
         </div>

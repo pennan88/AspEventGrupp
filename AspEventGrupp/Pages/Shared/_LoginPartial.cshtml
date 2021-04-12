@@ -23,11 +23,11 @@
             </li>
         }
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            <h5><a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a></h5>
         </li>
         <li class="nav-item">
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                <button id="logout" type="submit" class="btn btn-outline-secondary mx-2">Logout</button>
+                <button id="logout" type="submit" class="btn btn-secondary mx-2">Logout</button>
             </form>
         </li>
     }
@@ -35,10 +35,10 @@
     {
 
         <li class="nav-item mx-2">
-            <a class="btn btn-outline-primary mx-2" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="btn btn-primary mx-2" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
         <li class="nav-item mx-2">
-            <a class="btn btn-outline-secondary mx-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="btn btn-secondary mx-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
 
     }
