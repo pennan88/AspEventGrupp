@@ -12,6 +12,8 @@ namespace AspEventGrupp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        public byte[] ProfilePicture { get; set; }
+
         [InverseProperty("Organizer")]
         public Event HostedEvents { get; set; }
 
