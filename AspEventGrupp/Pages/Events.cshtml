@@ -11,7 +11,7 @@
 {
     <div class="d-flex justify-content-center">
         <p>
-            <a asp-page="/Organizer/AddEvent" class="btn btn-outline-info">Create New</a>
+            <a asp-page="/Organizer/AddEvent" class="btn btn-info">Create New</a>
         </p>
     </div>
 
@@ -22,14 +22,15 @@
         <div class="card mx-2" style="width: 18rem; background:none;">
             <img src="~/images/1-2.jpg" class="card-img-top" />
             <div class="card-body d-flex flex-column">
-                <h5 class="text-center">@Html.DisplayFor(modelItem => item.Title) </h5>
-                <p>Decription: @Html.DisplayFor(modelItem => item.Description)</p>
+                <h4 class="text-center">@Html.DisplayFor(modelItem => item.Title) </h4>
                 <p>Location: @Html.DisplayFor(modelItem => item.Location)</p>
                 <p>Adress: @Html.DisplayFor(modelItem => item.Adress)</p>
                 <p>Date: @Html.DisplayFor(modelItem => item.Date)</p>
                 <p>Tickets left: @Html.DisplayFor(modelItem => item.SpotsLeft)</p>
+            </div>
+            <div>
+                <a class="btn btn-primary m-2" asp-route-id="@item.Id" asp-page="JoinEvent">Join Event</a>
 
-                <a class="btn btn-primary align-self-center" asp-route-id="@item.Id" asp-page="JoinEvent" asp-area="">Join Event</a>
             </div>
         </div>
     }
