@@ -9,7 +9,7 @@
 
 <div class="d-flex justify-content-center">
     <p>
-        <a asp-page="/Organizer/AddEvent" class="btn btn-outline-info">Create New</a>
+        <a asp-page="/Organizer/AddEvent" class="btn btn-info">Create New</a>
     </p>
 </div>
 <table class="table">
@@ -33,7 +33,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Event[0].SpotsLeft)
             </th>
-            <th></th>
+            <th>
+                <b>Options</b>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -59,8 +61,8 @@
                     @Html.DisplayFor(modelItem => item.SpotsLeft)
                 </td>
                 <td>
-                    <a asp-page="/Organizer/Options/Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="/Organizer/Options/Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="/Organizer/Options/Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-page="/Organizer/Options/Details" asp-route-id="@item.Id">Details</a>
                     <a asp-page="/Organizer/Options/Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
