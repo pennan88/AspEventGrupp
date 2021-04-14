@@ -32,10 +32,12 @@
                     <p>@Html.DisplayFor(model => model.Event.SpotsLeft)</p>
                 </div>
             </div>
-            <form method="post">
-                <input class="m-2 btn btn-success align-self-center" type="submit" value="Join Event" />
+            <div class="d-flex justify-content-center">
+                <form method="post">
+                    <input class="m-2 btn btn-success align-self-center" type="submit" value="Join Event" />
+                </form>
                 <a class="m-2 btn btn-success align-self-center" asp-page="/Events">Back to List</a>
-            </form>
+            </div>
         </div>
     </div>
 </div>
