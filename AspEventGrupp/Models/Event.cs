@@ -13,6 +13,7 @@ namespace AspEventGrupp.Models
         public string Location { get; set; }
         public string Adress { get; set; }
         public string Genre { get; set; }
+        public string EventImage { get; set; }
         public DateTime Date { get; set; }
         public int SpotsLeft { get; set; }
         public List<User> Attendess { get; set; }

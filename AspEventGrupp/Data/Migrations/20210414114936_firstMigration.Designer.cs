@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AspEventGrupp.Data.Migrations
+namespace AspEventGrupp.Data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210413114600_firstmigration")]
-    partial class firstmigration
+    [Migration("20210414114936_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace AspEventGrupp.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EventImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Genre")
