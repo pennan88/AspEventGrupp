@@ -10,7 +10,7 @@
 <h4>Event</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin:auto; margin-top:90px; background-color: #92929256;  border-radius: 15px;">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -43,16 +43,14 @@
                 <input asp-for="Event.SpotsLeft" class="form-control" />
                 <span asp-validation-for="Event.SpotsLeft" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <div class="d-flex justify-content-center">
+                <input class="m-2 btn btn-primary align-self-center" type="submit" value="Save" />
+
         </form>
+        <a class="m-2 btn btn-primary align-self-center" asp-page="Index">Back to List</a>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
