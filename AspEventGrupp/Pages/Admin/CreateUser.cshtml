@@ -1,14 +1,14 @@
 ﻿@page
-@model RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
+@model AspEventGrupp.Pages.Admin.CreateUserModel
 
+@{
+    ViewData["Title"] = "CreateUser";
+}
 <h1>@ViewData["Title"]</h1>
 <div class="container">
     <div class="row">
         <div class="col-md-4" style="margin:auto; margin-top:90px; background-color: #92929256; border-radius: 15px;">
-            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <form method="post">
                 <h4 class="my-3">Create a new account.</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -47,6 +47,10 @@
         </div>
     </div>
 </div>
+<div>
+    <a asp-page="ManageUser">Back to List</a>
+</div>
+
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

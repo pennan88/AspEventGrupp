@@ -17,15 +17,16 @@ namespace AspEventGrupp.Pages
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public JoinEventModel(ApplicationDbContext context, UserManager<User> userManager)
+        public JoinEventModel(ApplicationDbContext context, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _context = context;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public Event Event { get; set; }
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -71,7 +72,7 @@ namespace AspEventGrupp.Pages
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/MyEvents");
+            return Page();
         }
     }
 }
