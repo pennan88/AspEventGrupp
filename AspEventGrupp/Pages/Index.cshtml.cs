@@ -28,7 +28,7 @@ namespace AspEventGrupp.Pages
 
         public async Task OnGetAsync(bool? resetDb)
         {
-            if ( resetDb ?? false )
+            if (resetDb ?? false)
             {
                 await _context.Seed(_userManager, _roleManager);
             }

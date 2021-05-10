@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,7 +17,11 @@ namespace AspEventGrupp.Models
         public string EventImage { get; set; }
         public DateTime Date { get; set; }
         public int SpotsLeft { get; set; }
-        public List<User> Attendess { get; set; }
-        public List<User> Organizer { get; set; }
+
+        [InverseProperty("HostedEvents")]
+        public User Organizer { get; set; }
+
+        [InverseProperty("JoinedEvents")]
+        public List<User> Attendees { get; set; }
     }
 }

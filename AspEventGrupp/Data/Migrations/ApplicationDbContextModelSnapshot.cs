@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AspEventGrupp.Data.migrations
+namespace AspEventGrupp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -44,6 +44,9 @@ namespace AspEventGrupp.Data.migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OrganizerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("SpotsLeft")
                         .HasColumnType("int");
 
@@ -51,6 +54,8 @@ namespace AspEventGrupp.Data.migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizerId");
 
                     b.ToTable("Event");
                 });
@@ -76,9 +81,6 @@ namespace AspEventGrupp.Data.migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("HostedEventsId")
-                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -121,8 +123,6 @@ namespace AspEventGrupp.Data.migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HostedEventsId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -136,13 +136,13 @@ namespace AspEventGrupp.Data.migrations
 
             modelBuilder.Entity("EventUser", b =>
                 {
-                    b.Property<string>("AttendessId")
+                    b.Property<string>("AttendeesId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("JoinedEventsId")
                         .HasColumnType("int");
 
-                    b.HasKey("AttendessId", "JoinedEventsId");
+                    b.HasKey("AttendeesId", "JoinedEventsId");
 
                     b.HasIndex("JoinedEventsId");
 
@@ -284,20 +284,20 @@ namespace AspEventGrupp.Data.migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AspEventGrupp.Models.User", b =>
+            modelBuilder.Entity("AspEventGrupp.Models.Event", b =>
                 {
-                    b.HasOne("AspEventGrupp.Models.Event", "HostedEvents")
-                        .WithMany("Organizer")
-                        .HasForeignKey("HostedEventsId");
+                    b.HasOne("AspEventGrupp.Models.User", "Organizer")
+                        .WithMany("HostedEvents")
+                        .HasForeignKey("OrganizerId");
 
-                    b.Navigation("HostedEvents");
+                    b.Navigation("Organizer");
                 });
 
             modelBuilder.Entity("EventUser", b =>
                 {
                     b.HasOne("AspEventGrupp.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("AttendessId")
+                        .HasForeignKey("AttendeesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -359,9 +359,9 @@ namespace AspEventGrupp.Data.migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AspEventGrupp.Models.Event", b =>
+            modelBuilder.Entity("AspEventGrupp.Models.User", b =>
                 {
-                    b.Navigation("Organizer");
+                    b.Navigation("HostedEvents");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AspEventGrupp.Data;
 using AspEventGrupp.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace AspEventGrupp.Pages.Organizer
 {
@@ -15,10 +16,12 @@ namespace AspEventGrupp.Pages.Organizer
     public class AddEventModel : PageModel
     {
         private readonly AspEventGrupp.Data.ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public AddEventModel(AspEventGrupp.Data.ApplicationDbContext context)
+        public AddEventModel(AspEventGrupp.Data.ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult OnGet()
@@ -32,15 +35,25 @@ namespace AspEventGrupp.Pages.Organizer
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if ( !ModelState.IsValid )
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Event.Add(Event);
-            await _context.SaveChangesAsync();
+            var user = await _userManager.GetUserAsync(this.User);
+            Event.Organizer = user;
+            try
+            {
+                await _context.Event.AddAsync(Event);
+                await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+                return RedirectToPage(".././Index");
+            }
+            catch
+            {
+                return RedirectToPage(".././Error");
+            }
+
         }
     }
 }

@@ -14,10 +14,7 @@ namespace AspEventGrupp.Models
 
         public byte[] ProfilePicture { get; set; }
 
-        [InverseProperty("Organizer")]
-        public Event HostedEvents { get; set; }
-
-        [InverseProperty("Attendess")]
+        public List<Event> HostedEvents { get; set; }
         public List<Event> JoinedEvents { get; set; }
     }
 }
